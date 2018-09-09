@@ -1,0 +1,43 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Student App</h3>
+            <ul class="nav nav-pills">
+                <li class="active"><a href="/home">List Student</a></li>
+                <li><a href="/create">Create a Student</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <h2>User Report</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Student Id</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% students.forEach(function(student){ %>
+                        <form action="http://localhost:8080/delete" method="post">
+                            <input  type="hidden" class="form-control" name="studentId" value="<%= student.studentId %>">
+                            <tr>
+                                <td><%= student.studentName %></td>
+                                <td><%= student.studentId %></td>
+                                <td><%= student.department %></td>
+                                <td> <button class="btn btn-warning" type="submit">Delete</button></td>
+                            </tr>
+                        </form>
+                    <%  }); %>
+                </tbody>
+            </table>
+        </div>              
+    </body>
+</html>
